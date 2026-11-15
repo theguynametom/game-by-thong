@@ -1,4 +1,4 @@
-package screen;
+package game.screen;
 
 import javax.swing.JPanel;
 import java.awt.*;
@@ -8,3 +8,4 @@ public class GamePanel extends JPanel {
         setBackground(Color.BLACK);
     }
 }
+

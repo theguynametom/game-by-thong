@@ -1,4 +1,6 @@
-package screen;
+package game;
+
+import game.screen.GamePanel;
 
 import javax.swing.JFrame; //import cai nay de hinh cua so
 
