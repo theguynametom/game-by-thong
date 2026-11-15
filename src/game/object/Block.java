@@ -1,3 +1,5 @@
+package game.object;
+
 import java.awt.Color;
 import java.awt.Graphics2D;
 
@@ -14,3 +16,4 @@ public class Block extends GameObject {
         g.fillRect(x, y, 32, 32);
     }
 }
+

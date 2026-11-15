@@ -1,13 +1,19 @@
+package game.object;
+
 import java.awt.Graphics2D;
 import java.awt.Color;
 
 public class Player extends GameObject {
+    private int spawnx;
+    private int spawny;
     private int Vx;
     private int Vy;
     private boolean onGround;
 
     public Player( int x, int y){
         super(x, y, 32, 48);
+        this.spawnx=x;
+        this.spawny=y;
     }
     
     @Override
@@ -27,8 +33,15 @@ public class Player extends GameObject {
     }
     public void jump(){
         if(onGround==true){
-            this.Vy++;
+            this.Vy=-15;
         }
-
+    }
+    public void respawn(){
+        x=spawnx;
+        y=spawny;
+        Vx=0;
+        Vy=0;
+        onGround=false;
     }
 }
+

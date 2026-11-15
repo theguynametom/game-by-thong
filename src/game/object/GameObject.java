@@ -1,3 +1,5 @@
+package game.object;
+
 //day la lop cha nhe la goc cua tat ca cac lop
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
@@ -21,3 +23,4 @@ public abstract class GameObject{
     public abstract void update();
     public abstract void draw(Graphics2D g);
 }
+
