@@ -1,0 +1,21 @@
+# Kich thuoc map theo so tile; moi tile co kich thuoc 32x32 pixel.
+SIZE 40 14
+
+# Vi tri xuat hien cua Player tinh theo toa do tile.
+SPAWN 2 11
+
+# BLOCK_ROW gom cac Block lien tiep tren cung mot hang tile.
+BLOCK_ROW 0 13 13
+BLOCK_ROW 16 13 9
+BLOCK_ROW 28 13 12
+BLOCK_ROW 5 10 4
+BLOCK_ROW 10 8 4
+BLOCK_ROW 19 10 4
+BLOCK_ROW 24 8 3
+BLOCK_ROW 28 10 10
+
+# Spike va Goal duoc dat theo toa do tile.
+SPIKE 17 12
+DOOR gate1 34 11
+SWITCH switch1 gate1 32 12
+GOAL 37 11
