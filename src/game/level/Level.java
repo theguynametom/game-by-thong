@@ -125,12 +125,18 @@ public class Level {
                         }
                     }
                     case "SPIKE" -> {
-                        // SPIKE tao object gay that bai tai mot toa do tile.
-                        requireCount(values, 3, index);
+                        // SPIKE co the tao mot gai hoac mot day gai lien tiep theo chieu ngang.
+                        if (values.length != 3 && values.length != 4) {
+                            throw invalidLine(index, "SPIKE can toa do X, Y va tuy chon so tile");
+                        }
                         requireSize(columns, rows, index);
                         int x = coordinate(values[1], columns, index);
                         int y = coordinate(values[2], rows, index);
-                        objects.add(new Spike(x * TILE_SIZE, y * TILE_SIZE));
+                        int count = values.length == 4 ? positiveInt(values[3], index) : 1;
+                        if (count > columns - x) throw invalidLine(index, "SPIKE vuot qua chieu rong level");
+                        for (int spikeX = x; spikeX < x + count; spikeX++) {
+                            objects.add(new Spike(spikeX * TILE_SIZE, y * TILE_SIZE));
+                        }
                     }
                     case "DOOR" -> {
                         // DOOR can ID de Switch co the lien ket den dung cua.

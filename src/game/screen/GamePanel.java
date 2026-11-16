@@ -20,8 +20,12 @@ import javax.swing.Timer;
 /** Quan ly Level, input, cap nhat gameplay va ve man hinh choi. */
 @SuppressWarnings("serial")
 public class GamePanel extends JPanel {
+    // Thu tu cac file level duoc choi tu dau den cuoi.
+    private static final String[] LEVEL_FILES = {"level1.txt", "level2.txt"};
+
     // Cac he thong nay duoc dung chung trong suot thoi gian Level dang chay.
-    private final Level level;
+    private Level level;
+    private int levelIndex;
     private final InputHandler inputHandler;
     private final Collision collision;
     private final Camera camera;
@@ -34,13 +38,7 @@ public class GamePanel extends JPanel {
     public GamePanel(){
         // Bao cho JFrame kich thuoc client mong muon cua panel.
         setPreferredSize(new Dimension(800, 450));
-        try {
-            // Doc level tu duong dan tinh tu thu muc goc project.
-            level = Level.load(Path.of("resources", "levels", "level1.txt"));
-        } catch (IOException exception) {
-            // Dung khoi tao va bao loi neu file level thieu hoac khong dung dinh dang.
-            throw new IllegalStateException("Khong the tai resources/levels/level1.txt", exception);
-        }
+        level = loadLevel(LEVEL_FILES[levelIndex]);
         // Khoi tao bo doc phim, xu ly va cham va camera cho Level da nap.
         inputHandler = new InputHandler();
         collision = new Collision();
@@ -72,6 +70,16 @@ public class GamePanel extends JPanel {
 
     /** Cap nhat input, Player, va cham, tuong tac va camera trong mot tick. */
     private void updateGame() {
+        if (level.isCompleted()) {
+            if (levelIndex + 1 < LEVEL_FILES.length) {
+                levelIndex++;
+                level = loadLevel(LEVEL_FILES[levelIndex]);
+            } else {
+                repaint();
+                return;
+            }
+        }
+
         if (!level.isCompleted()) {
             // Lay Player tu Level de cac he thong cung cap nhat mot doi tuong.
             Player player = level.getPlayer();
@@ -94,6 +102,16 @@ public class GamePanel extends JPanel {
         }
         // Yeu cau Swing ve lai panel, ke ca khi Level da hoan thanh.
         repaint();
+    }
+
+    /** Tai level theo thu tu file va bao loi ro rang neu file khong nap duoc. */
+    private static Level loadLevel(String fileName) {
+        Path path = Path.of("resources", "levels1", fileName);
+        try {
+            return Level.load(path);
+        } catch (IOException exception) {
+            throw new IllegalStateException("Khong the tai " + path, exception);
+        }
     }
 
     /** Ve the gioi theo camera va ve HUD tren he toa do man hinh. */

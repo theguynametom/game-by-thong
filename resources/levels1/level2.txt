@@ -1,0 +1,13 @@
+# Kich thuoc map theo so tile; moi tile co kich thuoc 32x32 pixel.
+SIZE 50 41
+
+# Mat dat chay het chieu ngang.
+BLOCK_ROW 0 40 43
+
+# Vi tri xuat hien cua Player (o do trong hinh).
+SPAWN 15 38
+
+#bat thang ben phai
+BLOCK_ROW 40 1 3
+
+GOAL 5 15
