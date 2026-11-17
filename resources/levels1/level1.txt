@@ -2,8 +2,8 @@
 SIZE 40 30
 
 # Vi tri xuat hien cua Player (o do trong hinh).
-SPAWN 2 19
-#SPAWN 7 0(hàng này để test lv2)
+#SPAWN 2 19
+SPAWN 6 8
 
 # Mat dat chay het chieu ngang.
 BLOCK_ROW 0 29 40
